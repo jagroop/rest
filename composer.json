@@ -1,0 +1,25 @@
+{
+  "name": "jagroop/rest",
+  "type": "library",
+  "description": "Useful Scafold for making php rest Apis",
+  "keywords": ["php","pdo", "rest", "validations", "mail", "asynchronous"],
+  "homepage": "https://github.com/jagroop/rest",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jagroop Singh",
+      "email": "geek.jagroop@gmail.com",
+      "homepage": "http://jagroop.github.io"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app"
+    }
+  },
+  "minimum-stability": "dev"
+}
