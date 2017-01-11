@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Artisan;
 class Notification {
 
 	/**
@@ -38,9 +38,9 @@ class Notification {
 	/**
 	 * Send notification to android device
 	 * @param  array $data Payload
-	 * @return void       
+	 * @return void
 	 */
-	private static function android($data) {		
+	private static function android($data) {
 
 		$fields = array(
 			'registration_ids' => array(static::$deviceToken),
@@ -67,16 +67,16 @@ class Notification {
 	/**
 	 * Send push notification to IOS device
 	 * @param  array $data Payload
-	 * @return void       
+	 * @return void
 	 */
 	private static function ios($data) {
 
 		try {
 			$ctx = stream_context_create();
-		
-			stream_context_set_option($ctx, 'ssl', 'cafile', __DIR__.'/entrust_2048_ca.cer');
+
+			stream_context_set_option($ctx, 'ssl', 'cafile', __DIR__ . '/entrust_2048_ca.cer');
 			stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
-			stream_context_set_option($ctx, 'ssl', 'local_cert',  __DIR__.'/ck.pem'); //development
+			stream_context_set_option($ctx, 'ssl', 'local_cert', __DIR__ . '/ck.pem'); //development
 			// stream_context_set_option($ctx, 'ssl', 'local_cert', $this->certPath); //live
 			stream_context_set_option($ctx, 'ssl', 'passphrase', static::$passPhrase);
 			// stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
@@ -91,7 +91,7 @@ class Notification {
 			$msg = chr(0) . pack('n', 32) . pack('H*', static::$deviceToken) . pack('n', strlen($payload)) . $payload;
 
 			$result = fwrite($fp, $msg, strlen($msg));
-		
+
 			fclose($fp);
 		} catch (\Exception $e) {
 			//
@@ -102,7 +102,7 @@ class Notification {
 	public function __construct() {
 		$config = require '../config/services.php';
 		$apiKey = $appConfig['mobile']['android']['api_key'];
-		$this->headers = array('Authorization: key=' . $apiKey, 'Content-Type: application/json');	
+		$this->headers = array('Authorization: key=' . $apiKey, 'Content-Type: application/json');
 		$this->passPhrase = $appConfig['mobile']['ios']['pass_phrase'];
 	}
 
@@ -110,7 +110,7 @@ class Notification {
 	 * Send Push Notification
 	 * @param  object $user    User Object
 	 * @param  array $payLoad Payload
-	 * @return mixed          
+	 * @return mixed
 	 */
 	public static function send($user, $payLoad) {
 

@@ -1,13 +1,14 @@
 <?php
 namespace App;
 
-use App\classes\Mail;
-use App\classes\Rest;
-use App\classes\Notification;
+use App\Artisan\Rest;
+
+// use App\Artisan\Mail;
+// use App\Artisan\Notification;
 
 class Events extends Rest {
 
-	public function sendEmailsToAll(){
+	public function sendEmailsToAll() {
 		$users = json_decode($_POST['data'], true);
 		//...
 	}

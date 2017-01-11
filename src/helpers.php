@@ -1,13 +1,11 @@
 <?php
-$conf = require dirname(__FILE__) . '/../config/app.php';
 
 if (!function_exists('app')) {
 	/**
 	 * Get application name
 	 */
 	function app() {
-		global $conf;
-		return $conf['name'];
+		return 'My Application';
 	}
 }
 
@@ -16,7 +14,7 @@ if (!function_exists('base_url')) {
 	 * Get Application Base url
 	 * @return string Full Base url
 	 */
-	function base_url() {		
+	function base_url() {
 		$dir = str_replace('/var/www/html', '', dirname(dirname(__FILE__))) . "/web/";
 		return "http://" . $_SERVER['HTTP_HOST'] . $dir;
 	}
@@ -27,27 +25,27 @@ if (!function_exists('event')) {
 	 * Dispatch an event
 	 */
 	function event($eventName, $data = array()) {
-	try {
-	 	$url = base_url().'events/'.$eventName.'/?dont_log_request';
-	    $curl = curl_init();
-	    $post['data'] = json_encode($data);
-	    curl_setopt($curl, CURLOPT_URL, $url);
-	    curl_setopt($curl, CURLOPT_POST, TRUE);
-	    curl_setopt($curl, CURLOPT_POSTFIELDS, $post); 
-	    curl_setopt($curl, CURLOPT_USERAGENT, 'api');
-	    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-	    curl_setopt($curl, CURLOPT_HEADER, 0);
-	    curl_setopt($curl,  CURLOPT_RETURNTRANSFER, false);
-	    curl_setopt($curl, CURLOPT_FORBID_REUSE, true);
-	    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-	    curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 10);
-	    curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
-	    $data = curl_exec($curl);   
-	    //echo $data;
-	    curl_close($curl);
-	 } catch (Exception $e) {
-	 	//app_log('event dispatch failed');
-	 } 
+		try {
+			$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
+			$curl = curl_init();
+			$post['data'] = json_encode($data);
+			curl_setopt($curl, CURLOPT_URL, $url);
+			curl_setopt($curl, CURLOPT_POST, TRUE);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($curl, CURLOPT_USERAGENT, 'api');
+			curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+			curl_setopt($curl, CURLOPT_HEADER, 0);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
+			curl_setopt($curl, CURLOPT_FORBID_REUSE, true);
+			curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
+			curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 10);
+			curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
+			$data = curl_exec($curl);
+			//echo $data;
+			curl_close($curl);
+		} catch (Exception $e) {
+			//app_log('event dispatch failed');
+		}
 	}
 }
 
@@ -76,10 +74,6 @@ if (!function_exists('storage_path')) {
 	 */
 	function storage_path() {
 		$storage = "storage/uploads/";
-		global $conf;
-		if (isset($conf['storage_path'])) {
-			$storage = $conf['storage_path'];
-		}
 		$dir = str_replace('/var/www/html', '', dirname(dirname(__FILE__))) . "/" . $storage;
 		return "http://" . $_SERVER['HTTP_HOST'] . $dir;
 	}

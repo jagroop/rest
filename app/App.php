@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\classes\Rest;
+use App\Artisan\Rest;
 
 class App extends Rest {
 	//

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Classes;
+namespace App\Artisan;
 
-use App\classes\DB;
+use App\Artisan\DB;
 
 class Validator {
 

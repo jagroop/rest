@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\classes\Mail;
-use App\classes\Rest;
+use App\Artisan\Mail;
+use App\Artisan\Rest;
 
 class Auth extends Rest {
 

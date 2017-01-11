@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Classes;
+namespace App\Artisan;
 
-use App\classes\DB;
-use App\classes\Validator;
+use App\Artisan\DB;
+use App\Artisan\Validator;
 
 class Rest {
 

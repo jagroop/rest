@@ -1,5 +1,5 @@
 <?php
-namespace App\Classes;
+namespace App\Artisan;
 /**
  * Simple Cache class
  * API Documentation: https://github.com/cosenary/Simple-PHP-Cache

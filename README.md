@@ -1,8 +1,7 @@
-# PHP REST
+# PHP REST (Usefull scaffold for making php rest APIs)
 
 [![php version](https://img.shields.io/badge/php-%3E%3D5.3-blue.svg)]()
 [![dependencies](https://img.shields.io/gemnasium/mathiasbynens/he.svg)]()
-[![build](https://img.shields.io/codeship/d6c1ddd0-16a3-0132-5f85-2e35c05e22b1.svg)]()
 
 Mails | Database | Validations | Cache | Helpers
 
@@ -67,7 +66,7 @@ $this->db->table('users')->insert([
 ## Sending Mails :email:
 
 ```php
-use App\classes\Mail;
+use App\Artisan\Mail;
 
 $user = $this->db->table('users')->where('id',1)->get();
 
@@ -82,7 +81,7 @@ $mail = Mail::send('template_name', compact('user'))
 ## Sending Push Notifications :bell:
 
 ```php
-use App\classes\Notification;
+use App\Artisan\Notification;
 
 $user = $this->db->table('users')->where('id',1)->get();
 
