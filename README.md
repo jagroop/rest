@@ -3,8 +3,6 @@
 [![php version](https://img.shields.io/badge/php-%3E%3D5.3-blue.svg)]()
 [![dependencies](https://img.shields.io/gemnasium/mathiasbynens/he.svg)]()
 
-Mails | Database | Validations | Cache | Helpers
-
 Table of contents
 -----------------
 * [Installation](#installation)
