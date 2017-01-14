@@ -12,7 +12,7 @@ Table of contents
 * [Database](#database)
 * [Cache](#cache)
 * [Laravel Helpers](#laravel-helpers)
-* [Validations](##validations)
+* [Validations](#validations)
 * [Mails](#sending-mails)
 * [Push Notifications](#sending-push-notifications)
 * [Async HTTP requests](#asynchronous-http-requests)
@@ -140,11 +140,11 @@ class Events {
 		//loop through all $users and send emails
 	}
 }
-
-//or
-
-$data = json_encode(array('name' => 'Jagroop Singh'));
-exec('curl http://localhost/dev/rest/web/events/methodName -d data=' . $data . ' > /dev/null &');
 ```
+Or if you are using Linux distribution you can also use `async` Helper method :
 
-[PHP exec](http://php.net/manual/en/function.exec.php)
+
+```php
+$users = $this->db->table('users')->getAll();
+async('sendNewOfferEmail', $users)
+```

@@ -22,7 +22,10 @@ if (!function_exists('base_url')) {
 
 if (!function_exists('event')) {
 	/**
-	 * Dispatch an event
+	 * Asynchromous HTTP Requests
+	 * @param  string $eventName Name of the function defined in Events.php
+	 * @param  array || object $data      Data to send along with the http request
+	 * @return void
 	 */
 	function event($eventName, $data = array()) {
 		try {
@@ -41,11 +44,24 @@ if (!function_exists('event')) {
 			curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 10);
 			curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
 			$data = curl_exec($curl);
-			//echo $data;
 			curl_close($curl);
 		} catch (Exception $e) {
 			//app_log('event dispatch failed');
 		}
+	}
+}
+
+if (!function_exists('async')) {
+	/**
+	 * Asynchronus HTTP Request (for linux distributions only)
+	 * @param  string $eventName Name of function defined in Events.php File
+	 * @param  array || object $data      Data to send along with the http request
+	 * @return void
+	 */
+	function async($eventName, $data) {
+		$encodeIntoJson = json_encode($data);
+		$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
+		exec('curl ' . $url . ' -d data=' . $encodeIntoJson . ' > /dev/null &');
 	}
 }
 
