@@ -5,7 +5,20 @@
 
 Mails | Database | Validations | Cache | Helpers
 
-## Installation
+Table of contents
+-----------------
+* [Installation](#installation)
+* [Url Structure](#url-structure)
+* [Database](#database)
+* [Cache](#cache)
+* [Laravel Helpers](#laravel-helpers)
+* [Validations](##validations)
+* [Mails](#sending-mails)
+* [Push Notifications](#sending-push-notifications)
+* [Async HTTP requests](#asynchronous-http-requests)
+
+Installation
+------------
 
 ```shell
 $ git clone https://github.com/jagroop/rest.git
@@ -13,19 +26,23 @@ $ cd rest
 $ composer install
 ```
 
-## Url Structure
+Url Structure
+-------------
 
 http://localhost/rest/web/class/method/param_1/param_2/..../param_n
 
-## Database :fire:
+Database
+--------
 
 [PDO Query Builder](https://github.com/izniburak/PDOx/blob/master/DOCS.md)
 
-## Cache :bowtie:
+Cache
+-----
 
 [Simple PHP Cache](https://github.com/cosenary/Simple-PHP-Cache)
 
-## Laravel helpers :boom:
+Laravel helpers
+---------------
 
 [Laravel 5 Helpers for Non-Laravel Projects](https://github.com/rappasoft/laravel-helpers)
 
@@ -47,7 +64,8 @@ storage_path();
 ```
 
 
-## Validations :thumbsup:
+Validations
+-----------
 
 [GUMP Validator](https://github.com/Wixel/GUMP)
 
@@ -71,7 +89,8 @@ $this->db->table('users')->insert([
 ]);
 ```
  
-## Sending Mails :email:
+Sending Mails
+-------------
 
 ```php
 use App\Artisan\Mail;
@@ -86,7 +105,8 @@ $mail = Mail::send('template_name', compact('user'))
 			->deliver();
 ```
 
-## Sending Push Notifications :bell:
+Sending Push Notifications
+--------------------------
 
 ```php
 use App\Artisan\Notification;
@@ -101,7 +121,8 @@ $payload = [
 Notification::send($user, $payload);
 ```
 
-## Asynchronous HTTP requests :rocket:
+Asynchronous HTTP requests
+--------------------------
 
 ```php
 $users = $this->db->table('users')->where('user_type', 1)->getAll();
