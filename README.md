@@ -57,7 +57,8 @@ $user = array('name' => 'Clark Kent', 'planet' => 'Crypton');
 view($viewName = 'index', $data = compact('user')); //views path => resources/views
 
 //Activity logging. Note: Make sure the log file is writeable.
-app_log($data = array('foo' => 'bar'), $logType = "INFO"); // log file path => storage/logs/requests.log
+app_log($data = array('foo' => 'bar'), $logType = "INFO"); 
+// log file path => storage/logs/requests.log
 
 //Get storage path
 storage_path();
