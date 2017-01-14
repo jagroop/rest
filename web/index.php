@@ -41,9 +41,8 @@ class Bootstrap {
 	}
 
 	public function __construct() {
-		ini_set('display_errors');
-		error_reporting(E_ALL);
-		$config = require dirname(__FILE__) . '/../config/app.php';
+
+		$config = require __DIR__ . '/../config/app.php';
 
 		if (isset($config['debug']) && $config['debug'] === false) {
 			ini_set('display_errors', 0);

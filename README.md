@@ -5,7 +5,15 @@
 
 Mails | Database | Validations | Cache | Helpers
 
-##Url Structure
+## Installation
+
+```shell
+$ git clone https://github.com/jagroop/rest.git
+$ cd rest
+$ composer install
+```
+
+## Url Structure
 
 http://localhost/rest/web/class/method/param_1/param_2/..../param_n
 
