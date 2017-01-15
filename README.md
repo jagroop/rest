@@ -147,5 +147,7 @@ Or if you are using Linux distribution you can also use `async` Helper method :
 
 ```php
 $users = $this->db->table('users')->getAll();
-async('sendNewOfferEmail', $users)
+async('sendNewOfferEmail', $users);
 ```
+
+Happy Coding !!!
