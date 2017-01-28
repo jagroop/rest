@@ -50,7 +50,7 @@ New helpers:
 
 ```php
 //Get App name
-app(); //App name is defined in config file config/app.php
+app();
 
 //Load a view.
 $user = array('name' => 'Clark Kent', 'planet' => 'Crypton');
