@@ -91,7 +91,7 @@ if (!function_exists('view')) {
 	 * @return void
 	 */
 	function view($view, $data = array()) {
-		$view = dirname(__DIR__) . '/resources/views/' . $view . '.php';
+		$view = dirname(__DIR__) . '/../resources/views/' . $view . '.php';
 		if (file_exists($view)) {
 			extract($data);
 			require $view;
