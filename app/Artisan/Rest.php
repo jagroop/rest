@@ -40,30 +40,6 @@ class Rest {
 	}
 
 	/**
-	 * Get requested data
-	 * @return array Request data
-	 */
-	public function request() {
-
-		$data = array();
-
-		if ($_SERVER['REQUEST_METHOD'] === "GET") {
-
-			$data = (isset($_GET) && count($_GET)) ? $_GET : array();
-
-			if (isset($data['url'])) {
-				unset($data['url']);
-			}
-
-		} elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
-
-			$data = (isset($_POST) && count($_POST)) ? $_POST : array();
-
-		}
-
-		return $data;
-	}
-	/**
 	 * Return Json response
 	 * @param  array  $response Response array
 	 * @return json
