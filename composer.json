@@ -21,7 +21,7 @@
       "App\\": "app"
     },
     "files": [
-      "src/helpers.php"
+      "app/Helpers/helpers.php"
     ]
   },
   "minimum-stability": "dev"

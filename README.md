@@ -52,6 +52,17 @@ New helpers:
 //Get App name
 app();
 
+//Get HttpRequest Data
+request('name'); // For Perticular single value
+
+//or
+
+request(['name', 'email', 'password']); //Returns array for perticular values only
+
+//or
+
+request(); //All HttpRequest Data
+
 //Load a view.
 $user = array('name' => 'Clark Kent', 'planet' => 'Crypton');
 view($viewName = 'index', $data = compact('user')); //views path => resources/views

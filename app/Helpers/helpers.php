@@ -1,4 +1,5 @@
 <?php
+use App\Artisan\Request;
 
 if (!function_exists('app')) {
 	/**
@@ -6,6 +7,23 @@ if (!function_exists('app')) {
 	 */
 	function app() {
 		return 'My Application';
+	}
+}
+
+if (!function_exists('request')) {
+	/**
+	 * Get HttpRequestData
+	 * @param  [type] $key [description]
+	 * @return [type]      [description]
+	 */
+	function request($key = null) {
+		$request = new Request;
+		if ($key && !is_array($key)) {
+			return $request->key($key);
+		} elseif ($key && is_array($key)) {
+			return $request->only($key);
+		}
+		return $request->all();
 	}
 }
 

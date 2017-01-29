@@ -9,7 +9,7 @@ class Auth extends Rest {
 
 	public function register() {
 
-		$request = $this->request();
+		$request = request(['name', 'email']);
 
 		//Set Validation Rules
 		$rules = array(
@@ -21,7 +21,7 @@ class Auth extends Rest {
 		$this->validate($request, $rules);
 
 		//Insert data into db after validation
-		$newUser = $this->db->table('users')->insert($request); // Docs => https://github.com/izniburak/PDOx/blob/master/DOCS.md
+		$newUser = $this->db->table('users')->insert($request);
 
 		if ($newUser) {
 
@@ -37,7 +37,7 @@ class Auth extends Rest {
 
 		//return  response
 
-		return ($newUser) ? $this->success('User has been successfully registered') : $this->error('Something Went Wrong');
+		return ($newUser) ? $this->success('User has been successfully registered.') : $this->error('Something Went Wrong.');
 
 	}
 
