@@ -57,7 +57,7 @@ request('name'); // For Perticular single value
 
 //or
 
-request(['name', 'email', 'password']); //Returns array for perticular values only
+request(['name', 'email', 'password']); //Returns array for specific values only
 
 //or
 
@@ -73,6 +73,9 @@ app_log($data = array('foo' => 'bar'), $logType = "INFO");
 
 //Get storage path
 storage_path();
+
+//Get Application Base url
+base_url();
 ```
 
 
@@ -90,15 +93,13 @@ $rules = array('email' => 'required|valid_email|unique,users');
 //exist,table_name or exist,table_name:col_name
 $rules = array('user_id' => 'required|exist,users:id');
 
-$this->validate($_REQUEST, $rules);
+$request = request(['name', 'email']);
+
+$this->validate($request, $rules);
 
 //Now you can insert your data in DB
 
-$this->db->table('users')->insert([
-	'name' => $_REQUEST['name'],
-	'email' => $_REQUEST['email'],
-	//.......
-]);
+$this->db->table('users')->insert($request);
 ```
  
 Sending Mails
@@ -148,7 +149,7 @@ event('sendNewOfferEmail', $users);
 class Events {
 
 	public function sendNewOfferEmail(){
-		$users = json_decode($_POST['data'], true);
+		$users = json_decode(request('data'), true);
 		//loop through all $users and send emails
 	}
 }
