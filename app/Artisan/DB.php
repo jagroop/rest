@@ -32,7 +32,7 @@ class DB {
 
 	public function __construct() {
 
-		$config = require '../config/database.php';
+		$config = config('database');
 
 		$config['driver'] = ((@$config['driver']) ? $config['driver'] : 'mysql');
 		$config['host'] = ((@$config['host']) ? $config['host'] : 'localhost');

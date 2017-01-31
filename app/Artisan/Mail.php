@@ -56,7 +56,7 @@ class Mail {
 	 */
 	public static function send($view, array $data) {
 
-		$config = require '../config/app.php';
+		$config = config('app');
 
 		extract($data);
 
@@ -109,10 +109,10 @@ class Mail {
 	 */
 	public function deliver() {
 		$config = array();
-		$mailConfig = '../config/mail.php';
+		$config = config('mail');
 
-		if (file_exists($mailConfig)) {
-			$config = require $mailConfig;
+		if (!$config) {
+			return false;
 		}
 
 		$mail = new \PHPMailer;

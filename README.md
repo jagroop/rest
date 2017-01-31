@@ -50,7 +50,7 @@ New helpers:
 
 ```php
 //Get App name
-app();
+app_name();
 
 //Get HttpRequest Data
 request('name'); // For Perticular single value

@@ -1,12 +1,14 @@
 <?php
 use App\Artisan\Request;
+use App\Artisan\Config;
 
-if (!function_exists('app')) {
+if (!function_exists('app_name')) {
 	/**
 	 * Get application name
 	 */
-	function app() {
-		return 'My Application';
+	function app_name() {
+		$config = config('app');
+		return @$config['name'];
 	}
 }
 
@@ -136,6 +138,18 @@ if (!function_exists('app_log')) {
 			$content = "[" . $logType . "] [" . $dayTime . "] [" . $url . "]" . PHP_EOL . $data . PHP_EOL . PHP_EOL;
 			file_put_contents($file, $content, FILE_APPEND);
 		}
+	}
+}
+
+if(!function_exists('config'))
+{
+	/**
+	 * Get configuration params
+	 * @param  string $file Name of the config file
+	 * @return array || null       
+	 */
+	function config($file = null){
+		return Config::get($file);
 	}
 }
 
