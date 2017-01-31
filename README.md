@@ -76,6 +76,9 @@ storage_path();
 
 //Get Application Base url
 base_url();
+
+//The groupBy method groups the arrays items by a given key:
+groupBy($array, $key);
 ```
 
 

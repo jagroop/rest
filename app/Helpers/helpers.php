@@ -1,6 +1,6 @@
 <?php
-use App\Artisan\Request;
 use App\Artisan\Config;
+use App\Artisan\Request;
 
 if (!function_exists('app_name')) {
 	/**
@@ -26,6 +26,25 @@ if (!function_exists('request')) {
 			return $request->only($key);
 		}
 		return $request->all();
+	}
+}
+
+if (!function_exists('groupBy')) {
+	/**
+	 * The groupBy method groups the array items by a given key:
+	 * @param  array  $array Items
+	 * @param  string $key   Key to group By
+	 * @return array        Grouped items
+	 */
+	function groupBy(array $array, $key = null) {
+		$res = [];
+		foreach ($array as $value):
+			if (!isset($res[$value[$key]])) {
+				$res[$value[$key]] = array();
+			}
+			$res[$value[$key]][] = array_slice($value, 0);
+		endforeach;
+		return $res;
 	}
 }
 
@@ -141,14 +160,13 @@ if (!function_exists('app_log')) {
 	}
 }
 
-if(!function_exists('config'))
-{
+if (!function_exists('config')) {
 	/**
 	 * Get configuration params
 	 * @param  string $file Name of the config file
-	 * @return array || null       
+	 * @return array || null
 	 */
-	function config($file = null){
+	function config($file = null) {
 		return Config::get($file);
 	}
 }
