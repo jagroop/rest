@@ -79,6 +79,9 @@ base_url();
 
 //The groupBy method groups the arrays items by a given key:
 groupBy($array, $key);
+
+//Get message
+message('email_confimed'); //path => app/resources/messages/default.php
 ```
 
 

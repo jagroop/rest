@@ -29,6 +29,16 @@ if (!function_exists('request')) {
 	}
 }
 
+if (!function_exists('message')) {
+	function message($key, $file = 'default') {
+		$file = __DIR__ . '/../../resources/messages/' . $file . '.php';
+		if (!file_exists($file)) {
+			return null;
+		}
+		$msgs = require $file;
+		return @$msgs[$key];
+	}
+}
 if (!function_exists('groupBy')) {
 	/**
 	 * The groupBy method groups the array items by a given key:
