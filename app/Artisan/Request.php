@@ -8,30 +8,35 @@ class Request {
 	private $data = [];
 
 	/**
-     * The attributes that should not be trimmed.
-     *
-     * @var array
-     */
-    protected $except = [
-        'password',
-        'password_confirmation'
-    ];
+	 * The attributes that should not be trimmed.
+	 *
+	 * @var array
+	 */
+	protected $except = [
+		'password',
+		'password_confirmation',
+	];
 
-    /**
-     * Transform the given value.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
-     */
-    protected function transform($key, $value)
-    {
-        if (in_array($key, $this->except)) {
-            return $value;
-        }
+	/**
+	 * Transform the given value.
+	 *
+	 * @param  string  $key
+	 * @param  mixed  $value
+	 * @return mixed
+	 */
+	protected function transform($key, $value) {
+		$config = config('app');
 
-        return is_string($value) ? trim($value) : $value;
-    }
+		if (@$config['trim_strings'] === false) {
+			return $value;
+		}
+
+		if (in_array($key, $this->except)) {
+			return $value;
+		}
+
+		return is_string($value) ? trim($value) : $value;
+	}
 
 	public function __construct() {
 		$this->method = ($_SERVER['REQUEST_METHOD']) ?: null;
@@ -58,7 +63,7 @@ class Request {
 	 * @return mixed
 	 */
 	public function key($key = null) {
-		return ($this->data[$key]) ?: null;
+		return @$this->transform($key, $this->data[$key]);
 	}
 
 	/**
@@ -74,7 +79,7 @@ class Request {
 		$input = $this->data;
 
 		foreach ($keys as $key) {
-			$results[$key] = @$this->data[$key];
+			$results[$key] = @$this->transform($key, $this->data[$key]);
 		}
 
 		return $results;
