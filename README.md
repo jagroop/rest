@@ -157,7 +157,7 @@ class Events {
 	}
 }
 ```
-Or if you are using Linux distribution you can also use `async` Helper method :
+Or if you are using Linux distribution you can use `async` Helper method instead :
 
 
 ```php
