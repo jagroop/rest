@@ -81,7 +81,7 @@ base_url();
 groupBy($array, $key);
 
 //Get message
-message('email_confimed'); //path => app/resources/messages/default.php
+message('email_confirmed'); //path => app/resources/messages/default.php
 ```
 
 
