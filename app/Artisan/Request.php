@@ -47,6 +47,7 @@ class Request {
 		} elseif ($this->method === "POST") {
 			$this->data = $_POST;
 		}
+		$this->data = array_merge($this->data, $_FILES);
 	}
 
 	/**
