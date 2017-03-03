@@ -203,6 +203,27 @@ if (!function_exists('append_config')) {
 	}
 }
 
+if (!function_exists('upload')) {
+	/**
+	 * Upload Files
+	 * @param  string $file Name of File
+	 * @param  string $path Path to store a file
+	 * @return string || null       Returns name if file uploaded, else returns null
+	 */
+	function upload($name = null, $path = "") {
+		$file = request($name);
+
+		if(isset($file["tmp_name"]) && is_uploaded_file($file["tmp_name"]))
+		{
+			$name = str_random().$file["name"];
+			$uploadPath = __DIR__ . "/../../storage/uploads/" . $path;
+			$move =  @move_uploaded_file($file["tmp_name"], $uploadPath.$name); 
+			return ($move) ? $name : null;
+		}
+		return null;
+	}
+}
+
 if (!function_exists('array_add')) {
 	/**
 	 * Add an element to an array using "dot" notation if it doesn't exist.

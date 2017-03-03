@@ -82,6 +82,9 @@ groupBy($array, $key);
 
 //Get message
 message('email_confirmed'); //path => app/resources/messages/default.php
+
+//Upload File
+upload('file_name', 'path_to_folder/');
 ```
 
 
