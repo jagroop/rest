@@ -79,6 +79,7 @@ if (!function_exists('event')) {
 	function event($eventName, $data = array()) {
 		try {
 			$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
+			$data = urldecode(http_build_query($data));
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
 			curl_setopt($curl, CURLOPT_POST, TRUE);

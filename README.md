@@ -155,7 +155,7 @@ event('sendNewOfferEmail', $users);
 class Events {
 
 	public function sendNewOfferEmail(){
-		$users = json_decode(request('data'), true);
+		$users = $_POST['users'];
 		//loop through all $users and send emails
 	}
 }

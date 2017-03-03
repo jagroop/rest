@@ -9,6 +9,7 @@ use App\Artisan\Rest;
 class Events extends Rest {
 
 	public function sendEmailsToAll() {
-		// $name = $_POST['name'];
+		$users = $_POST['users'];
+		//loop through all $users and send emails
 	}
 }

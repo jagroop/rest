@@ -8,6 +8,6 @@ return [
 
 	"trim_strings" => true,
 
-	"base_url" => "http://localhost/dev/rest/web/"
+	"base_url" => "http://" . $_SERVER['HTTP_HOST'] . "/dev/rest/web/"
 
 ];
