@@ -84,7 +84,8 @@ groupBy($array, $key);
 message('email_confirmed'); //path => app/resources/messages/default.php
 
 //Upload File
-upload('file_name', 'path_to_folder/');
+upload('file_name', 'path_to_folder/'); 
+//returns name of the uploaded file 'Adwer3435gdfgd_batman.jpg' (returns null if file wasn't uploaded)
 ```
 
 
