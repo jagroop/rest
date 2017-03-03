@@ -64,8 +64,8 @@ if (!function_exists('base_url')) {
 	 * @return string Full Base url
 	 */
 	function base_url() {
-		$dir = str_replace('/var/www/html', '', dirname(dirname(__FILE__))) . "/web/";
-		return "http://" . $_SERVER['HTTP_HOST'] . $dir;
+		$config =  config('app');
+		return @$config['base_url'];
 	}
 }
 
@@ -80,10 +80,9 @@ if (!function_exists('event')) {
 		try {
 			$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
 			$curl = curl_init();
-			$post['data'] = json_encode($data);
 			curl_setopt($curl, CURLOPT_URL, $url);
 			curl_setopt($curl, CURLOPT_POST, TRUE);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($curl, CURLOPT_USERAGENT, 'api');
 			curl_setopt($curl, CURLOPT_TIMEOUT, 1);
 			curl_setopt($curl, CURLOPT_HEADER, 0);
@@ -153,7 +152,7 @@ if (!function_exists('app_log')) {
 	 * @return void
 	 */
 	function app_log($data, $logType = "INFO") {
-		$file = dirname(__FILE__) . "/../storage/logs/requests.log";
+		$file = __DIR__ . "/../../storage/logs/requests.log";
 		$url = "";
 
 		if (is_array($data) && isset($data['url'])) {

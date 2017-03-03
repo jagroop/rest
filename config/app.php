@@ -7,4 +7,7 @@ return [
 	"debug" => true,
 
 	"trim_strings" => true,
+
+	"base_url" => "http://localhost/dev/rest/web/"
+
 ];

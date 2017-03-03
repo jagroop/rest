@@ -9,7 +9,6 @@ use App\Artisan\Rest;
 class Events extends Rest {
 
 	public function sendEmailsToAll() {
-		$data = json_decode($_POST['data'], true);
-		//...
+		// $name = $_POST['name'];
 	}
 }
