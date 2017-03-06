@@ -6,10 +6,10 @@ use App\Artisan\Rest;
 // use App\Artisan\Mail;
 // use App\Artisan\Notification;
 
-class Events extends Rest {
+class Async extends Rest {
 
 	public function sendEmailsToAll() {
-		$users = request('users');
-		//loop through all $users and send emails
+		$offerId = request('offer_id');
+		//...
 	}
 }

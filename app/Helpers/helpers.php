@@ -69,17 +69,16 @@ if (!function_exists('base_url')) {
 	}
 }
 
-if (!function_exists('event')) {
+if (!function_exists('async')) {
 	/**
 	 * Asynchromous HTTP Requests
 	 * @param  string $eventName Name of the function defined in Events.php
 	 * @param  array || object $data      Data to send along with the http request
 	 * @return void
 	 */
-	function event($eventName, $data = array()) {
+	function async($eventName, $data = array()) {
 		try {
-			$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
-			$data = urldecode(http_build_query($data));
+			$url = base_url() . 'async/' . $eventName . '/?dont_log_request';
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
 			curl_setopt($curl, CURLOPT_POST, TRUE);
@@ -95,22 +94,8 @@ if (!function_exists('event')) {
 			$data = curl_exec($curl);
 			curl_close($curl);
 		} catch (Exception $e) {
-			//app_log('event dispatch failed');
+			//app_log('async failed');
 		}
-	}
-}
-
-if (!function_exists('async')) {
-	/**
-	 * Asynchronus HTTP Request (for linux distributions only)
-	 * @param  string $eventName Name of function defined in Events.php File
-	 * @param  array || object $data      Data to send along with the http request
-	 * @return void
-	 */
-	function async($eventName, $data) {
-		$encodeIntoJson = json_encode($data);
-		$url = base_url() . 'events/' . $eventName . '/?dont_log_request';
-		exec('curl ' . $url . ' -d data=' . $encodeIntoJson . ' > /dev/null &');
 	}
 }
 

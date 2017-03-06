@@ -148,28 +148,18 @@ Asynchronous HTTP requests
 --------------------------
 
 ```php
-$users = $this->db->table('users')->where('user_type', 1)->getAll();
+async('sendNewOfferEmail', ['offer_id' => 123]);
 
-event('sendNewOfferEmail', $users);
-
-//Events will be defined in app/Events.php class
+//Async requests will be defined in app/Async.php
 
 //example:
 
-class Events {
+class Async {
 
 	public function sendNewOfferEmail(){
-		$users = $_POST['users'];
-		//loop through all $users and send emails
+		$offerId = request('offer_id');
+		//...
 	}
 }
 ```
-Or if you are using Linux distribution you can use `async` Helper method instead :
-
-
-```php
-$users = $this->db->table('users')->getAll();
-async('sendNewOfferEmail', $users);
-```
-
 Happy Coding !!!
