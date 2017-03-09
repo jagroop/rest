@@ -11,7 +11,7 @@ Table of contents
 * [Url Structure](#url-structure)
 * [Database](#database)
 * [Cache](#cache)
-* [Laravel Helpers](#laravel-helpers)
+* [Helpers](#helpers)
 * [Validations](#validations)
 * [Mails](#sending-mails)
 * [Push Notifications](#sending-push-notifications)
@@ -41,12 +41,12 @@ Cache
 
 [Simple PHP Cache](https://github.com/cosenary/Simple-PHP-Cache)
 
-Laravel helpers
+Helpers
 ---------------
 
 [Laravel 5 Helpers for Non-Laravel Projects](https://github.com/rappasoft/laravel-helpers)
 
-[New helpers:](https://github.com/jagroop/rest/blob/master/HELPERS.md)
+[New helpers](https://github.com/jagroop/rest/blob/master/HELPERS.md)
 
 Validations
 -----------
