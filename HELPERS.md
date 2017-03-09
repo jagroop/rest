@@ -11,22 +11,24 @@ Helpers
 * [view](#)
 
 ##### app_name()
-The ```app_name()``` function returns the name of app defined in config/app.php
+The ```app_name()``` function returns the name of app defined in ```config/app.php```.
 
-//Get HttpRequest Data
+##### request()
+The ```request()``` function returns the http request data.
+
+```php
 request('name'); // For Perticular single value
-
-//or
-
 request(['name', 'email', 'password']); //Returns array for specific values only
+request(); // All HttpRequest Data
+```
 
-//or
+##### view()
+The ```view()``` function returns a view defined in ```resources/views/```.
 
-request(); //All HttpRequest Data
-
-//Load a view.
+```php
 $user = array('name' => 'Clark Kent', 'planet' => 'Crypton');
-view($viewName = 'index', $data = compact('user')); //views path => resources/views
+view($viewName = 'index', $data = compact('user'));
+```
 
 //Activity logging. Note: Make sure the log file is writeable.
 app_log($data = array('foo' => 'bar'), $logType = "INFO"); 
