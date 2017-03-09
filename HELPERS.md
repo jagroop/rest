@@ -23,6 +23,9 @@ app_log($data = array('foo' => 'bar'), $logType = "INFO");
 
 __Note:__ Make sure `requests.log` file is writable.
 
+##### async()
+The `async()` function is for sending asynchronous(non-blocking) HTTP requests.
+
 ##### base_url()
 The `base_url()` function returns app base url defined in `config/app.php`
 
