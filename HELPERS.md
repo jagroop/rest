@@ -10,10 +10,8 @@ Helpers
 * [upload](#)
 * [view](#)
 
-##### Get Application name
-```php 
-app_name();
-```
+##### app_name()
+The ```app_name()``` function returns the name of app defined in config/app.php
 
 //Get HttpRequest Data
 request('name'); // For Perticular single value
