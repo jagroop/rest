@@ -11,10 +11,10 @@ Helpers
 * [view](#)
 
 ##### app_name()
-The ```app_name()``` function returns the name of app defined in ```config/app.php```.
+The `app_name()` function returns the name of app defined in `config/app.php`
 
 ##### request()
-The ```request()``` function returns the http request data.
+The `request()` function returns the http request data.
 
 ```php
 request('name'); // For Perticular single value
@@ -23,30 +23,63 @@ request(); // All HttpRequest Data
 ```
 
 ##### view()
-The ```view()``` function returns a view defined in ```resources/views/```.
+The `view()` function returns a view defined in `resources/views/`.
 
 ```php
 $user = array('name' => 'Clark Kent', 'planet' => 'Crypton');
 view($viewName = 'index', $data = compact('user'));
 ```
 
-//Activity logging. Note: Make sure the log file is writeable.
+##### app_log()
+The `app_log()` function logs almost every type of data types in `storage/logs/requests.log`
+
+```php
 app_log($data = array('foo' => 'bar'), $logType = "INFO"); 
-// log file path => storage/logs/requests.log
+```
 
-//Get storage path
-storage_path();
+__Note:__ Make sure `requests.log` file is writable.
 
-//Get Application Base url
-base_url();
+##### storage_path()
+The `storage_path()` function returns app storage path.
 
-//The groupBy method groups the arrays items by a given key:
-groupBy($array, $key);
+##### base_url()
+The `base_url()` function returns app base url defined in `config/app.php`
 
-//Get message
-message('email_confirmed'); //path => app/resources/messages/default.php
+##### groupBy()
+The `groupBy()` function groups the arrays items by a given key.
 
-//Upload File
+```php
+$array = [
+    ['account_id' => 'account-x10', 'product' => 'Chair'],
+    ['account_id' => 'account-x10', 'product' => 'Bookcase'],
+    ['account_id' => 'account-x11', 'product' => 'Desk'],
+];
+
+$grouped = groupBy('account_id');
+
+/*
+    [
+        'account-x10' => [
+            ['account_id' => 'account-x10', 'product' => 'Chair'],
+            ['account_id' => 'account-x10', 'product' => 'Bookcase'],
+        ],
+        'account-x11' => [
+            ['account_id' => 'account-x11', 'product' => 'Desk'],
+        ],
+    ]
+*/
+```
+
+##### message()
+The `message()` function returns a message defined in `resources/messages/default.php`
+
+```php
+message('email_confirm') //Please confirm your email address.
+```
+
+##### upload()
+The `upload()` function uploads a file to specific path and returns the name of uploaded file.
+
+```php
 upload('file_name', 'path_to_folder/'); 
-//returns name of the uploaded file 'Adwer3435gdfgd_batman.jpg' (returns null if file wasn't uploaded)
 ```
