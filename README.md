@@ -46,7 +46,7 @@ Laravel helpers
 
 [Laravel 5 Helpers for Non-Laravel Projects](https://github.com/rappasoft/laravel-helpers)
 
-New helpers: [](https://github.com/jagroop/rest/blob/master/HELPERS.md)
+[New helpers:](https://github.com/jagroop/rest/blob/master/HELPERS.md)
 
 Validations
 -----------
