@@ -4,6 +4,7 @@ Helpers
 * [app_log](#app_log)
 * [async](#async)
 * [base_url](#base_url)
+* [config](#config)
 * [groupBy](#groupBy)
 * [message](#message)
 * [request](#request)
@@ -28,6 +29,24 @@ The `async()` function is for sending asynchronous(non-blocking) HTTP requests.
 
 ##### base_url()
 The `base_url()` function returns app base url defined in `config/app.php`
+
+##### config()
+The `config()` function returns configuration array defined under `config/` folder.
+
+```php
+$app = config('app');
+
+/*
+[
+
+	"name" => "My Application",
+
+	"debug" => true,
+    
+    //....
+]
+*/
+```
 
 ##### groupBy()
 The `groupBy()` function groups the arrays items by a given key.
