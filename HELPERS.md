@@ -74,10 +74,10 @@ request(); // All HttpRequest Data
 The `storage_path()` function returns app storage path.
 
 ##### upload()
-The `upload()` function uploads a file to specific path and returns the name of uploaded file.
+The `upload()` function uploads a file to specified path and returns the name of uploaded file.
 
 ```php
-upload('file_name', 'path_to_folder/'); 
+upload('uploaded_file_name', 'path_to_folder/'); //returns null if not uploaded
 ```
 
 ##### view()
