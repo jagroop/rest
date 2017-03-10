@@ -78,6 +78,10 @@ The `message()` function returns a message defined in `resources/messages/defaul
 
 ```php
 message('email_confirm') //Please confirm your email address.
+
+//or if message is defined in another file.
+
+message('404', 'errors') //Record Not found.
 ```
 
 ##### request()
