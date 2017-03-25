@@ -11,8 +11,6 @@ class App extends Rest {
 	}
 
 	public function logs() {
-		// die(assets());
 		return view('logtail');
 	}
-
 }

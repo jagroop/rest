@@ -1,5 +1,12 @@
 #pause{
-	float: right;
-    position: fixed;
-    right: 7px;
+float: right;
+position: fixed;
+right: 7px;
+background-color: #2E4E75;
+border-radius: 10px;
+padding: 10px 14px;
+color: #fff;
+text-align: center;
+text-decoration: none;
+font-size: 18px;
 }
