@@ -64,8 +64,31 @@ if (!function_exists('base_url')) {
 	 * @return string Full Base url
 	 */
 	function base_url() {
-		$config =  config('app');
+		$config = config('app');
 		return @$config['base_url'];
+	}
+}
+
+if (!function_exists('assets')) {
+	/**
+	 * Get assets complete path
+	 * @return string
+	 */
+	function assets() {
+		return str_replace('web/', '', base_url()) . 'resources/assets/';
+	}
+}
+
+if (!function_exists('dd')) {
+	function dd($data, $varDump = false) {
+		echo "<pre>";
+		if ($varDump) {
+			var_dump($data);
+		} else {
+			print_r($data);
+		}
+		echo "</pre>";
+		die;
 	}
 }
 
@@ -198,11 +221,10 @@ if (!function_exists('upload')) {
 	function upload($name = null, $path = "") {
 		$file = request($name);
 
-		if(isset($file["tmp_name"]) && is_uploaded_file($file["tmp_name"]))
-		{
-			$name = str_random().$file["name"];
+		if (isset($file["tmp_name"]) && is_uploaded_file($file["tmp_name"])) {
+			$name = str_random() . $file["name"];
 			$uploadPath = __DIR__ . "/../../storage/uploads/" . $path;
-			$move =  @move_uploaded_file($file["tmp_name"], $uploadPath.$name); 
+			$move = @move_uploaded_file($file["tmp_name"], $uploadPath . $name);
 			return ($move) ? $name : null;
 		}
 		return null;
