@@ -28,6 +28,48 @@ if (!function_exists('request')) {
 		return $request->all();
 	}
 }
+if (!function_exists('isUrl')) {
+	/**
+	 * Check if given string is a valid Url or not
+	 * @param  string  $url Url To verify
+	 * @return boolean
+	 */
+	function isUrl($url) {
+		return (bool) filter_var($url, FILTER_VALIDATE_URL);
+	}
+}
+
+if (!function_exists('validateEmail')) {
+	//To check banned emails list goto https://github.com/ngfw/Recipe/blob/master/src/ngfw/banned.txt
+	/**
+	 * To validate the Email address
+	 * @param  string  $address          Email address to check
+	 * @param  boolean $tempEmailAllowed Preform a check from banned emails list ?
+	 * @return boolean
+	 */
+	function validateEmail($address, $tempEmailAllowed = true) {
+		strpos($address, '@') ? list(, $mailDomain) = explode('@', $address) : $mailDomain = null;
+		if (filter_var($address, FILTER_VALIDATE_EMAIL) &&
+			!is_null($mailDomain) &&
+			checkdnsrr($mailDomain, 'MX')
+		) {
+			if ($tempEmailAllowed) {
+				return true;
+			} else {
+				$handle = fopen(__DIR__ . '/banned_emails.txt', 'r');
+				$temp = [];
+				while (($line = fgets($handle)) !== false) {
+					$temp[] = trim($line);
+				}
+				if (in_array($mailDomain, $temp)) {
+					return false;
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+}
 
 if (!function_exists('message')) {
 	function message($key, $file = 'default') {
