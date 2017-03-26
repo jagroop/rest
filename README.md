@@ -9,6 +9,7 @@ Table of contents
 -----------------
 * [Installation](#installation)
 * [Url Structure](#url-structure)
+* [Naming conventions](#naming-conventions)
 * [Database](#database)
 * [Cache](#cache)
 * [Helpers](#helpers)
@@ -30,6 +31,10 @@ Url Structure
 -------------
 
 http://localhost/rest/web/class/method/param_1/param_2/..../param_n
+
+Naming conventions
+------------------
+* All files in app folder should be "title case"
 
 Database
 --------
