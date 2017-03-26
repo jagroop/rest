@@ -212,9 +212,11 @@ if (!function_exists('app_log')) {
 		}
 
 		if (count($data) && file_exists($file) && is_writable($file)) {
-			$data = (is_array($data) || is_object($data)) ? json_encode($data) : $data;
+			$data = (is_array($data) || is_object($data)) ? json_encode($data, JSON_PRETTY_PRINT) : $data;
 			$dayTime = date('D h:i');
-			$content = "[" . $logType . "] [" . $dayTime . "] [" . $url . "]" . PHP_EOL . $data . PHP_EOL . PHP_EOL;
+			// $content = "=======================================================================================" . PHP_EOL;
+			$content = "[" . $logType . "] [" . $dayTime . "] [" . $url . "]" . PHP_EOL . PHP_EOL . $data . PHP_EOL . PHP_EOL;
+			$content .= "=======================================================================================" . PHP_EOL;
 			file_put_contents($file, $content, FILE_APPEND);
 		}
 	}
