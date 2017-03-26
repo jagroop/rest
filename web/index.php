@@ -42,15 +42,16 @@ class Bootstrap {
 
 	public function __construct() {
 
-		$config = require __DIR__ . '/../config/app.php';
-		if (isset($config['debug']) && $config['debug'] === false) {
+		require __DIR__ . '/../vendor/autoload.php';
+		$config = config('app');
+		if (@$config['debug'] === false) {
 			ini_set('display_errors', 0);
 			error_reporting(0);
 		}
 
-		require __DIR__ . '/../vendor/autoload.php';
-
-		app_log($_REQUEST);
+		if (@$config['log_requests'] === true) {
+			app_log($_REQUEST, 'REQUEST');
+		}
 
 		$url = $this->parseUrl();
 		$classFile = __DIR__ . '/../app/' . ucfirst($url[0]) . '.php';
