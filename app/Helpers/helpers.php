@@ -40,7 +40,7 @@ if (!function_exists('isUrl')) {
 }
 
 if (!function_exists('validateEmail')) {
-	//To check banned emails list goto https://github.com/ngfw/Recipe/blob/master/src/ngfw/banned.txt
+
 	/**
 	 * To validate the Email address
 	 * @param  string  $address          Email address to check
@@ -56,7 +56,7 @@ if (!function_exists('validateEmail')) {
 			if ($tempEmailAllowed) {
 				return true;
 			} else {
-				$handle = fopen(__DIR__ . '/banned_emails.txt', 'r');
+				$handle = fopen(__DIR__ . '/banned_emails.txt', 'r'); //To check banned emails list goto app/Helpers/banned_emails.txt
 				$temp = [];
 				while (($line = fgets($handle)) !== false) {
 					$temp[] = trim($line);
