@@ -34,7 +34,7 @@ http://localhost/rest/web/class/method/param_1/param_2/..../param_n
 
 Naming conventions
 ------------------
-* All files in app folder should be "title case", for example: App.php, Users.php, UserPosts.php etc.
+* All files in app folder should be "title case", for example: ```App.php```, ```Users.php```, ```UserPosts.php``` etc.
 
 Database
 --------
