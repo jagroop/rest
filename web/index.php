@@ -30,6 +30,16 @@ class Bootstrap {
 		}
 	}
 
+  /**
+   * Return Not found Json Response in case if class or methos wasn't found in application
+   * @return Json Not found Json Response
+   */
+  protected function unAuthorized() {
+    header('Content-Type: application/json');
+    echo json_encode(array('code' => 403, 'success' => false, 'msg' => "You aren't authorized to perform this action.", 'data' => array()));
+    die;
+  }
+
 	/**
 	 * Return Not found Json Response in case if class or methos wasn't found in application
 	 * @return Json Not found Json Response
@@ -62,6 +72,13 @@ class Bootstrap {
 			return $this->invalidRequest();
 		}
 
+    if ($this->class == "Async") {
+      if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR'])
+      {
+        return $this->unAuthorized();
+        die;
+      }
+    }
 		$className = "\\App\\" . $this->class;
 
 		$this->class = new $className;
