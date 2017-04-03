@@ -73,7 +73,7 @@ class Bootstrap {
 		}
 
     if ($this->class == "Async") {
-      if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR'])
+      if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR'] || $_SERVER['HTTP_USER_AGENT'] != 'api')
       {
         return $this->unAuthorized();
         die;
