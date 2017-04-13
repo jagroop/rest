@@ -72,13 +72,13 @@ class Bootstrap {
 			return $this->invalidRequest();
 		}
 
-    if ($this->class == "Async") {
-      if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR'] || $_SERVER['HTTP_USER_AGENT'] != 'api')
-      {
-        return $this->unAuthorized();
-        die;
-      }
-    }
+    // if ($this->class == "Async") {
+    //   if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR'] || $_SERVER['HTTP_USER_AGENT'] != 'api')
+    //   {
+    //     return $this->unAuthorized();
+    //     die;
+    //   }
+    // }
 		$className = "\\App\\" . $this->class;
 
 		$this->class = new $className;

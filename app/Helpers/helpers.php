@@ -140,27 +140,33 @@ if (!function_exists('async')) {
 	 * @param  string $eventName Name of the function defined in Events.php
 	 * @param  array || object $data      Data to send along with the http request
 	 * @return void
-	 */
-	function async($eventName, $data = array()) {
-		try {
-			$url = base_url() . 'async/' . $eventName . '/?dont_log_request';
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, $url);
-			curl_setopt($curl, CURLOPT_POST, TRUE);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-			curl_setopt($curl, CURLOPT_USERAGENT, 'api');
-			curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-			curl_setopt($curl, CURLOPT_HEADER, 0);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
-			curl_setopt($curl, CURLOPT_FORBID_REUSE, true);
-			curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-			curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 10);
-			curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
-			$data = curl_exec($curl);
-			curl_close($curl);
-		} catch (Exception $e) {
-			//app_log('async failed');
-		}
+	 */	
+	function async($url, $params = array())
+	{
+		$url = base_url() . 'async/' . $url . '/?dont_log_request';
+		$post_string = http_build_query($params);
+        $parts = parse_url($url);
+            $errno = 0;
+        $errstr = "";
+ 
+       //Use SSL & port 443 for secure servers
+       //Use otherwise for localhost and non-secure servers
+       //For secure server
+        //$fp = fsockopen('ssl://' . $parts['host'], isset($parts['port']) ? $parts['port'] : 443, $errno, $errstr, 30);
+        //For localhost and un-secure server
+       $fp = fsockopen($parts['host'], isset($parts['port']) ? $parts['port'] : 80, $errno, $errstr, 30);
+        if(!$fp)
+        {
+            echo "Something Went Wrong";   
+        }
+        $out = "POST ".$parts['path']." HTTP/1.1\r\n";
+        $out.= "Host: ".$parts['host']."\r\n";
+        $out.= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $out.= "Content-Length: ".strlen($post_string)."\r\n";
+        $out.= "Connection: Close\r\n\r\n";
+        if (isset($post_string)) $out.= $post_string;
+        fwrite($fp, $out);
+        fclose($fp);
 	}
 }
 
@@ -212,11 +218,9 @@ if (!function_exists('app_log')) {
 		}
 
 		if (count($data) && file_exists($file) && is_writable($file)) {
-			$data = (is_array($data) || is_object($data)) ? json_encode($data, JSON_PRETTY_PRINT) : $data;
+			$data = (is_array($data) || is_object($data)) ? json_encode($data) : $data;
 			$dayTime = date('D h:i');
-			// $content = "=======================================================================================" . PHP_EOL;
 			$content = "[" . $logType . "] [" . $dayTime . "] [" . $url . "]" . PHP_EOL . PHP_EOL . $data . PHP_EOL . PHP_EOL;
-			$content .= "=======================================================================================" . PHP_EOL;
 			file_put_contents($file, $content, FILE_APPEND);
 		}
 	}
