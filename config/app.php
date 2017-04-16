@@ -8,7 +8,7 @@ return [
 
 	"trim_strings" => true,
 
-	"log_requests" => true,
+	"log_requests" => false,
 
 	"base_url" => "http://" . $_SERVER['HTTP_HOST'] . "/dev/rest/web/",
 

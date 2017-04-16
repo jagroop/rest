@@ -2,9 +2,8 @@
 namespace App;
 
 use App\Artisan\Rest;
-
-// use App\Artisan\Mail;
-// use App\Artisan\Notification;
+use App\Artisan\Mail;
+use App\Artisan\Notification;
 
 class Async extends Rest {
 

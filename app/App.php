@@ -6,10 +6,10 @@ use App\Artisan\Rest;
 
 class App extends Rest {
 
-	public function test()
-	{
-		async('sendEmailsToAll', ['name' => 'Jagroop Singh']);
-	}
+	/**
+	 * App Logs
+	 * @return void
+	 */
 	public function logs() {
 		return view('logtail');
 	}
