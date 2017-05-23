@@ -9,6 +9,7 @@ Helpers
 * [message](#message)
 * [request](#request)
 * [storage_path](#storage_path)
+* [uploads_path](#uploads_path)
 * [upload](#upload)
 * [view](#view)
 
@@ -95,6 +96,9 @@ request(); // All HttpRequest Data
 
 ##### storage_path()
 The `storage_path()` function returns app storage path.
+
+##### uploads_path()
+The `uploads_path()` function returns files uploads path.
 
 ##### upload()
 The `upload()` function uploads a file to specified path and returns the name of uploaded file.

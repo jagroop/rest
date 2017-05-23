@@ -199,9 +199,17 @@ if (!function_exists('storage_path')) {
 	 * @return string Full Storage path
 	 */
 	function storage_path() {
-		$storage = "storage/uploads/";
-		$dir = str_replace('/var/www/html', '', dirname(dirname(__FILE__))) . "/" . $storage;
-		return "http://" . $_SERVER['HTTP_HOST'] . $dir;
+		return rtrim(base_url(), '/web/') . '/storage';
+	}
+}
+
+if (!function_exists('uploads_path')) {
+	/**
+	 * Get Application uploads path
+	 * @return string Full uploads path
+	 */
+	function uploads_path() {
+		return storage_path() . '/uploads/';
 	}
 }
 
