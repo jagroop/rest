@@ -5,6 +5,7 @@ Helpers
 * [async](#async)
 * [base_url](#base_url)
 * [config](#config)
+* [deleteFile](#deleteFile)
 * [groupBy](#groupBy)
 * [message](#message)
 * [request](#request)
@@ -47,6 +48,12 @@ $app = config('app');
     //....
 ]
 */
+```
+##### deleteFile()
+The `deleteFile()` function deletes a file from specified path.
+
+```php
+deleteFile('file_name', 'path_to_folder/');
 ```
 
 ##### groupBy()

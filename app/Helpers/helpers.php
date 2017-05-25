@@ -292,6 +292,22 @@ if (!function_exists('upload')) {
 	}
 }
 
+if (!function_exists('deleteFile')) {
+  /**
+   * Delete File
+   * @param  string $file Name of File
+   * @param  string $path Path to store a file
+   * @return boolean
+   */
+  function deleteFile($name = null, $path = "") {    
+    $filePath = __DIR__ . "/../../storage/uploads/" . $path . $name;
+    if (file_exists($filePath)) {
+      return @unlink($filePath);
+    }
+    return false;
+  }
+}
+
 if (!function_exists('array_add')) {
 	/**
 	 * Add an element to an array using "dot" notation if it doesn't exist.
