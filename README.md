@@ -108,20 +108,20 @@ $payload = [
 Notification::send($user, $payload);
 ```
 
-Asynchronous HTTP requests
---------------------------
+Asynchronous HTTP requests (Non-Blocking)
+-----------------------------------------
 
 ```php
 async('sendNewOfferEmail', ['offer_id' => 123]);
 
-//Async requests will be defined in app/Async.php
+//Async requests target functions are defined in app/Async.php
 
 //example:
 
 class Async {
 
 	public function sendNewOfferEmail(){
-		$offerId = request('offer_id');
+		$offerId = (int) request('offer_id');
 		//...
 	}
 }
