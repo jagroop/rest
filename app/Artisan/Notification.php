@@ -21,7 +21,7 @@ class Notification {
 	 * Pass phrase of IOS
 	 * @var null
 	 */
-	private static $passphrase = null;
+	private static $passPhrase = null;
 
 	/**
 	 * Headers for android
