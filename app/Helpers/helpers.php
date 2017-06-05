@@ -157,11 +157,14 @@ if (!function_exists('async')) {
 		if (!$fp) {
 			echo "Something Went Wrong";
 		}
+    $userAgent = "Rest-API";
 		$out = "POST " . $parts['path'] . " HTTP/1.1\r\n";
 		$out .= "Host: " . $parts['host'] . "\r\n";
 		$out .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$out .= "Content-Length: " . strlen($post_string) . "\r\n";
+    $out .= "Content-Length: " . strlen($post_string) . "\r\n";
+		$out .= "User-Agent: " . $userAgent . "\r\n";
 		$out .= "Connection: Close\r\n\r\n";
+    app_log($out);
 		if (isset($post_string)) {
 			$out .= $post_string;
 		}
