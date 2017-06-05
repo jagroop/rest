@@ -16,7 +16,7 @@ Table of contents
 * [Validations](#validations)
 * [Mails](#sending-mails)
 * [Push Notifications](#sending-push-notifications)
-* [Async HTTP requests](#asynchronous-http-requests)
+* [Async HTTP requests](#asynchronous-http-requests-non-blocking)
 
 Installation
 ------------
