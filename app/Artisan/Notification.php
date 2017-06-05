@@ -114,8 +114,8 @@ class Notification {
 	 */
 	public static function send($user, $payLoad) {
 
-		$token = trim($user->device_token);
-		$deviceType = trim($user->device_type);
+		$token = trim(@$user->device_token);
+		$deviceType = trim(@$user->device_type);
 		$payLoad = array_merge($payLoad, self::DEFAULT);
 		if (in_array($deviceType, self::DEVICES) && $token != "") {
 			static::$deviceToken = $token;
