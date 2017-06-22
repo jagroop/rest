@@ -76,8 +76,8 @@ class Notification {
 
       stream_context_set_option($ctx, 'ssl', 'cafile', __DIR__ . '/entrust_2048_ca.cer');
       stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
-      stream_context_set_option($ctx, 'ssl', 'local_cert', __DIR__ . '/ck.pem'); //development
-      // stream_context_set_option($ctx, 'ssl', 'local_cert', $this->certPath); //live
+      stream_context_set_option($ctx, 'ssl', 'local_cert', __DIR__ . '/ck_dev.pem'); //sandbox
+      // stream_context_set_option($ctx, 'ssl', 'local_cert', __DIR__ . '/ck.pem'); //live
       stream_context_set_option($ctx, 'ssl', 'passphrase', static::$passPhrase);
       // stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
 
