@@ -1,6 +1,6 @@
 REST 
 ========
-[![php version](https://img.shields.io/badge/php-%3E%3D5.3-blue.svg)]()
+[![php version](https://img.shields.io/badge/PHP-%3E%3D5.3-blue.svg)]()
 
 REST is usefull scaffold for making rest APIs using php. It is simple, fast and lightweight.
 
