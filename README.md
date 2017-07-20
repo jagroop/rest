@@ -1,7 +1,6 @@
 REST 
 ========
 [![php version](https://img.shields.io/badge/php-%3E%3D5.3-blue.svg)]()
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 REST is usefull scaffold for making rest APIs using php. It is simple, fast and lightweight.
 
@@ -126,4 +125,4 @@ class Async {
 	}
 }
 ```
-Happy Coding !!!
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/jagroop/rest)
